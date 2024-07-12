@@ -584,7 +584,7 @@ void SysTick_Handler(void)//2ms运行一次?
 			}
 		    time_compute++;
 
-			if(abs(r) < 70){
+			if(abs(r) < 65){
 				UART1_Printf("%6.2f,", r);
 				UART1_Printf("%6.2f,", p);
 				if(y-y_Init>180){
@@ -598,11 +598,11 @@ void SysTick_Handler(void)//2ms运行一次?
 					y_final= y-y_Init;
 				}
 				UART1_Printf("%6.2f,", y_final);
+				UART1_Printf("%d", input.sRacc_data[1]);//通过打印此项能够观察到飞镖发射过程中加速是否平稳。
 				UART1_SendByte('\n');
 			}else{
 				time_compute = time_end;
 			}
-		    
 	   }
 
 	if(time_compute == time_end) //传输数据的时间为1.6s
