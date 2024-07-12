@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        ".jsonc": "json",
+        "*.json": "jsonc",
+        "usart.h": "c"
+    }
+}
