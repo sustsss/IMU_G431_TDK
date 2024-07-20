@@ -386,6 +386,7 @@ int data_Min = 0;
 float q[4] = {0.0f};
 float rpy[3] = {0.0f};
 float r,p,y = 0.0f;
+float r_record[5],p_record[5], y_record[5]={0.0f};
 //int r,p,y=0;
 uint8_t asf_state;
 uint8_t MSB_LSB_set_flag = 0;
@@ -582,11 +583,22 @@ void SysTick_Handler(void)//2ms运行一次?
 			if(time_compute == 0){
 				y_Init = y;
 			}
+
+			r_record[time_compute%5] = r;
+			p_record[time_compute%5] = p;//连续记录5次pitch数据，用最后一次减去初始的，看是否变化超过了10度，假如超过了10度，基本可以确定是落地了。
+			y_record[time_compute%5] = y;
+
+			if(time_compute > 500){
+				if(abs(r_record[4]-r_record[0])>10||abs(p_record[4]-p_record[0])>10||abs(y_record[4]-y_record[0])>10){
+					time_compute = time_end;
+				}
+			}
+
 		    time_compute++;
 
 			if(abs(r) < 65){
-				UART1_Printf("%6.2f,", r);
-				UART1_Printf("%6.2f,", p);
+				UART1_Printf("%.2f,", r);
+				UART1_Printf("%.2f,", p);
 				if(y-y_Init>180){
 					y_final=360+y_Init-y;
 				}else if (y-y_Init<-180)
@@ -594,11 +606,12 @@ void SysTick_Handler(void)//2ms运行一次?
 					y_final=360+y-y_Init;
 					
 				}else{
-					
+			
 					y_final= y-y_Init;
 				}
-				UART1_Printf("%6.2f,", y_final);
+				UART1_Printf("%.2f,", y_final);
 				UART1_Printf("%d", input.sRacc_data[1]);//通过打印此项能够观察到飞镖发射过程中加速是否平稳。
+
 				UART1_SendByte('\n');
 			}else{
 				time_compute = time_end;

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [G431ICM42688\G431ICM42688.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image G431ICM42688\G431ICM42688.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6070001: Last Updated: Tue Jun 25 23:18:05 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6070001: Last Updated: Sat Jul 20 21:17:23 2024
 <BR><P>
-<H3>Maximum Stack Usage =        404 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        412 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 SysTick_Handler &rArr; UART1_Printf &rArr; UART1_SendString &rArr; UART1_SendByte &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout &rArr; UART_EndRxTransfer
 <P>
@@ -432,9 +432,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
 <P><STRONG><a name="[10b]"></a>abs</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, siabs.o(.text))
@@ -649,8 +649,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = GyroBiasTrackerFxp_SetBias &rArr; memset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_mult_q30_fxp
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_mult_q30_fxp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_algo_asf_process
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvnAlgoASF_Init_r
@@ -705,10 +705,10 @@ Global Symbols
 
 <P><STRONG><a name="[80]"></a>GyroCalFnmFxp_Init</STRONG> (Thumb, 76 bytes, Stack size unknown bytes, gyro_cal_fnm_fxp.c.obj(.text.GyroCalFnmFxp_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
-<LI>Call Chain = GyroCalFnmFxp_Init &rArr; InterfaceCalibrationGyrFxp_Reset &rArr; memset
+<LI>Call Chain = GyroCalFnmFxp_Init &rArr; memset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InterfaceCalibrationGyrFxp_Reset
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InterfaceCalibrationGyrFxp_Reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvnAlgoASF_Init_r
 </UL>
@@ -1090,9 +1090,10 @@ Global Symbols
 
 <P><STRONG><a name="[c4]"></a>InvnAlgoASF_SetConfig_r</STRONG> (Thumb, 464 bytes, Stack size unknown bytes, invn_algo_asf.c.obj(.text.InvnAlgoASF_SetConfig_r))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
-<LI>Call Chain = InvnAlgoASF_SetConfig_r &rArr; GyroBiasTrackerFxp_Reset &rArr; memset
+<LI>Call Chain = InvnAlgoASF_SetConfig_r &rArr; memcpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PredictiveQuaternionFxp_SetParam
+<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcpy
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PredictiveQuaternionFxp_SetParam
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PredictiveQuaternionFxp_SetSamplingPeriod
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SphericalFxp_SetCustomParamMag
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SphericalFxp_SetCustomParamAcc
@@ -1103,7 +1104,6 @@ Global Symbols
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GyroCalFnmFxp_SetSamplingPeriod
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GyroCalFnmFxp_SetCustomParam
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SphericalFxp_SetCustomParamGyr
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvnAlgoASF_Init_r
 </UL>
@@ -1204,9 +1204,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = PredictiveQuaternionFxp_Init &rArr; memset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_inverse_fxp
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_inverse_fxp
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_mult_q30_fxp
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvnAlgoASF_Init_r
 </UL>
@@ -1296,11 +1296,11 @@ Global Symbols
 
 <P><STRONG><a name="[bf]"></a>SphericalFxp_Init</STRONG> (Thumb, 272 bytes, Stack size unknown bytes, spherical_fxp.c.obj(.text.SphericalFxp_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
-<LI>Call Chain = SphericalFxp_Init &rArr; InterfaceOrientation_Reset &rArr; memset
+<LI>Call Chain = SphericalFxp_Init &rArr; memset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InterfaceOrientation_Reset
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InterfaceOrientation_Reset
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_divide_q30_fxp
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvnAlgoASF_Init_r
 </UL>
@@ -1351,8 +1351,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_algo_asf_process
 </UL>
 
-<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 1556 bytes, Stack size 56 bytes, main.o(.text.SysTick_Handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 404 + Unknown Stack Size
+<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 1900 bytes, Stack size 64 bytes, main.o(.text.SysTick_Handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 412 + Unknown Stack Size
 <LI>Call Chain = SysTick_Handler &rArr; UART1_Printf &rArr; UART1_SendString &rArr; UART1_SendByte &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout &rArr; UART_EndRxTransfer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_algo_asf_process
@@ -1576,9 +1576,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 12 + Unknown Stack Size
 <LI>Call Chain = invn_algo_asf_init &rArr; inv_icm426xx_inline_authenticate_device &rArr; memcmp
 </UL>
-<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvnAlgoASF_Init_r
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InvnAlgoASF_Init_r
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inv_icm426xx_inline_authenticate_device
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ICM_INT
 </UL>
@@ -1691,10 +1691,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f4]"></a>invn_math_mult_q15_fxp</STRONG> (Thumb, 12 bytes, Stack size unknown bytes, invn_scalar_algebra_fxp.c.obj(.text.invn_math_mult_q15_fxp))
-<BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rls_core_Carlson4_fxp
+<BR><BR>[Called By]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_sqrt_q15_with_pow
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rls_core_Carlson4_fxp
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rls_core_Bierman4_fxp
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RlsCalibrationFxp_UpdateUncalibrated
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_sqrt_q15_with_pow
 </UL>
 
 <P><STRONG><a name="[77]"></a>invn_math_mult_q29_fxp</STRONG> (Thumb, 12 bytes, Stack size unknown bytes, invn_scalar_algebra_fxp.c.obj(.text.invn_math_mult_q29_fxp))
@@ -1833,9 +1833,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[7f]"></a>rls_core_Carlson4_fxp</STRONG> (Thumb, 520 bytes, Stack size unknown bytes, math_utils_fxp.c.obj(.text.rls_core_Carlson4_fxp))
-<BR><BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_mult_q15_fxp
+<BR><BR>[Calls]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_sqrt_q15_with_pow
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_mult_q15_fxp
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invn_math_inverse_q30_fxp
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inverse_sqrt_q15_with_pow
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GyroBiasTrackerFxp_UpdateRLSQ15.constprop.1
 </UL>
