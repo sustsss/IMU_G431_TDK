@@ -377,7 +377,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 
 uint32_t time_count = 0;
 uint32_t time_compute =  0;
-uint32_t time_end = 800;
+uint32_t time_end = 750;
 uint32_t test_counts = 0;
 float y_Init = 0;
 float y_final = 0;
@@ -527,7 +527,7 @@ void SysTick_Handler(void)//2ms运行一次?
 		input.sRgyr_data[0] = ((((int32_t)packet_union.packet_struct.gyro_x_h)<<4)+(int32_t)packet_union.packet_struct.gyro_x_l);
 		input.sRgyr_data[1] = ((((int32_t)packet_union.packet_struct.gyro_y_h)<<4)+(int32_t)packet_union.packet_struct.gyro_y_l);
 		input.sRgyr_data[2] = ((((int32_t)packet_union.packet_struct.gyro_z_h)<<4)+(int32_t)packet_union.packet_struct.gyro_z_l);
-		
+	
 		time_stamp += 4000;
 		
 		input.sRtemp_data = packet_union.packet_struct.temperature;
@@ -576,7 +576,7 @@ void SysTick_Handler(void)//2ms运行一次?
 		temp = packet_union.packet_struct.temperature /132.48f + 25.0f;
 	}
 	
-	   if((input.sRacc_data[1] > 300000&&flag == 0)||(time_compute < time_end && time_compute > 0))
+	   if((input.sRacc_data[1] > 400000&&flag == 0)||(time_compute < time_end && time_compute > 0))
 	    {
 			flag = 1;
 			
@@ -584,9 +584,9 @@ void SysTick_Handler(void)//2ms运行一次?
 				y_Init = y;
 			}
 
-			r_record[time_compute%5] = r;
-			p_record[time_compute%5] = p;//连续记录5次pitch数据，用最后一次减去初始的，看是否变化超过了10度，假如超过了10度，基本可以确定是落地了。
-			y_record[time_compute%5] = y;
+			r_record[time_compute%10] = r;
+			p_record[time_compute%10] = p;//连续记录5次pitch数据，用最后一次减去初始的，看是否变化超过了10度，假如超过了10度，基本可以确定是落地了。
+			y_record[time_compute%10] = y;
 
 			if(time_compute > 500){
 				if(abs(r_record[4]-r_record[0])>10||abs(p_record[4]-p_record[0])>10||abs(y_record[4]-y_record[0])>10){
@@ -596,7 +596,7 @@ void SysTick_Handler(void)//2ms运行一次?
 
 		    time_compute++;
 
-			if(abs(r) < 65){
+			if(abs(r) < 70){
 				UART1_Printf("%.2f,", r);
 				UART1_Printf("%.2f,", p);
 				if(y-y_Init>180){
@@ -678,7 +678,7 @@ int main(void)
   for(int i=0;i<1000000;i++){;}
 
   SysTick->CTRL |= SysTick_CTRL_TICKINT_Msk; // Enable SysTick Interrupt   
-  SysTick->LOAD = 85000000/250;
+  SysTick->LOAD = 85000000/250;//由250变为500
   SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk; // Enable SysTick
 
   /* USER CODE END 2 */
